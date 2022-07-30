@@ -6,13 +6,15 @@ Librespot lets you play content from Spotify to a speaker connected to your serv
 
 Refer to the librespot project [here](https://github.com/librespot-org/librespot).
 
-## Usage
+## Image
 
 Pull Docker image
 
 ```text
 docker pull agneev/librespot-alsa
 ```
+
+### Deploy
 
 ```text
 git clone https://github.com/agneevX/librespot-alsa
@@ -21,7 +23,7 @@ cd librespot-alsa
 docker compose up -d
 ```
 
-### Docker-compose
+For more examples, refer to the documentation linked above.
 
 ```yml
 services:

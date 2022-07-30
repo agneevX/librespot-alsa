@@ -1,6 +1,6 @@
 FROM alpine:latest as builder
 
-ARG LIBRESPOT_VERSION="v0.3.1"
+ARG LIBRESPOT_VERSION="v0.4.2"
 
 RUN apk -U add \
         curl \
@@ -8,11 +8,12 @@ RUN apk -U add \
         portaudio-dev \
         protobuf-dev
 
-RUN cd /root && \
-    curl -LO https://github.com/librespot-org/librespot/archive/refs/tags/$LIBRESPOT_VERSION.zip \
+WORKDIR /root
+
+RUN curl -LO https://github.com/librespot-org/librespot/archive/refs/tags/$LIBRESPOT_VERSION.zip \
     && unzip *.zip
 
-RUN cd /root/librespot* \
+RUN cd librespot* \
     && cargo build \
         --jobs $(grep -c ^processor /proc/cpuinfo) \
         --release \
