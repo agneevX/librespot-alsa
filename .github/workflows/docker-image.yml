@@ -1,14 +1,14 @@
-name: Publish Docker image
+name: Publish new-api Docker image
 
 on:
+  schedule:
+    - cron: '0 0 * * *'
   push:
     branches:
-      - master
-      - testing
+      - new-api
   pull_request:
     branches:
-      - master
-      - testing
+      - new-api
 
 env:
   REGISTRY: docker.io
@@ -53,5 +53,5 @@ jobs:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64
-          tags: docker.io/${{ secrets.DH_USER }}/${{ env.IMAGE_NAME }}:latest
+          tags: docker.io/${{ secrets.DH_USER }}/${{ env.IMAGE_NAME }}:new-api
           labels: ${{ steps.meta.outputs.labels }}
