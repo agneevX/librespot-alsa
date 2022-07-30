@@ -1,14 +1,29 @@
 # Librespot-alsa
 
-### Note: `arm64` only at the moment
+Librespot Docker image compiled with the alsa backend.
 
-Librespot image compiled with alsa backend. This is the latest version of librespotify (v.0.3.1) as of Nov 2021.
+Librespot lets you play content from Spotify to a speaker connected to your server. Note that this requires a Spotify Premium account.
 
-## Docker-compose
+Refer to the librespot project [here](https://github.com/librespot-org/librespot).
+
+## Usage
+
+Pull Docker image
+
+```text
+docker pull agneev/librespot-alsa
+```
+
+```text
+git clone https://github.com/agneevX/librespot-alsa
+cd librespot-alsa
+
+docker compose up -d
+```
+
+### Docker-compose
 
 ```yml
-version: "2.1"
-
 services:
   librespot:
     container_name: librespot
@@ -24,8 +39,6 @@ services:
      # - --disable-discovery # Uncomment to disable mDNS discovery
      # - --username=$SPOTIFY_USERNAME # Uncomment to 
      # - --password=$SPOTIFY_PASSWORD # use Spotify sign-in
-    environment:
-      SPOTIFY_NAME: "Loud Speakers"
     devices:
       - /dev/snd:/dev/snd
 ```

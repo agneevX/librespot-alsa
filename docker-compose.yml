@@ -1,0 +1,17 @@
+services:
+  librespot:
+    container_name: librespot
+    image: agneev/librespot-alsa
+    restart: unless-stopped
+    network_mode: host # Comment to use Docker networking
+    command:
+      - --name=Spotify Speaker
+      - --bitrate=320
+      - --autoplay
+      - --initial-volume=75
+      - --enable-volume-normalisation
+     # - --disable-discovery # Uncomment to disable mDNS discovery
+     # - --username=$SPOTIFY_USERNAME # Uncomment to 
+     # - --password=$SPOTIFY_PASSWORD # use Spotify sign-in
+    devices:
+      - /dev/snd:/dev/snd
