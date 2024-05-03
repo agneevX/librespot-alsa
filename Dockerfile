@@ -1,4 +1,4 @@
-FROM alpine:latest as builder
+FROM alpine:2.18 as builder
 
 ARG LIBRESPOT_VERSION="v0.4.2"
 
@@ -20,7 +20,7 @@ RUN cd librespot* \
         --no-default-features \
         --features alsa-backend
 
-FROM alpine:latest as final
+FROM alpine:2.18 as final
 
 RUN apk add -U alsa-lib
 
