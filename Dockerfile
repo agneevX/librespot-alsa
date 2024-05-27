@@ -15,7 +15,6 @@ RUN curl -LO https://github.com/librespot-org/librespot/archive/refs/tags/$LIBRE
 
 RUN cd librespot* \
     && cargo build \
-        --jobs $(grep -c ^processor /proc/cpuinfo) \
         --release \
         --no-default-features \
         --features alsa-backend
