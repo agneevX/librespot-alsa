@@ -16,10 +16,11 @@ RUN curl -LO https://github.com/librespot-org/librespot/archive/refs/tags/$LIBRE
 RUN cd librespot* \
     && cargo build \
         --release \
+        --jobs $(grep -c ^processor /proc/cpuinfo) \
         --no-default-features \
         --features alsa-backend
 
-FROM alpine:latest as final
+FROM alpine:3.16 as final
 
 RUN apk add -U alsa-lib
 
