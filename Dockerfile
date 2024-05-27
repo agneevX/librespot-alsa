@@ -1,4 +1,4 @@
-FROM alpine:latest as builder
+FROM alpine:3.16 as builder
 
 ARG LIBRESPOT_VERSION="v0.4.2"
 
